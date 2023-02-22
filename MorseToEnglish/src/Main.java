@@ -17,32 +17,26 @@ public class Main {
 
         int choice = scanner.nextInt();
 
-        //infinte loop
-        while (true) {
-            switch (choice) {
-                case 1 -> {
-                    System.out.println("Encode");
-                    System.out.print("Enter a message to encode: ");
-                    // Check that the next input is a string
-                    while (!scanner.hasNext()) {
-                        System.out.println("Please enter a message");
-                        System.out.print("Enter a message to encode: ");
-                        scanner.next();
-                    }
-                    String message = scanner.next();
-                    // Encode the message
-                    System.out.println("Morse code: " + morseReader.englishToMorse(message));
-                }
-                case 2 -> System.out.println("Decode");
-                case 3 -> {
-                    System.out.println("Exit");
-                    System.exit(0);
-                }
-                default -> System.out.println("Invalid choice");
+        switch (choice) {
+            case 1 -> {
+                System.out.print("Enter a message to encode: ");
+                String message = getText();
+
+                System.out.println("Morse code: " + morseReader.englishToMorse(message));
             }
-            printMenu();
-            choice = scanner.nextInt();
+            case 2 -> {
+                System.out.print("Enter a message to decode: ");
+
+                String message = getText();
+                    System.out.println("English: " + morseReader.morseToEnglish(message));
+            }
+            case 3 -> {
+                System.out.println("Good bye");
+                System.exit(0);
+            }
+            default -> System.out.println("Invalid choice");
         }
+        System.exit(0);
     }
 
     public static void printMenu() {
@@ -51,5 +45,15 @@ public class Main {
         System.out.println("2. Decode");
         System.out.println("3. Exit");
         System.out.print("Enter your choice: ");
+    }
+
+    public static String getText() {
+        Scanner scanner = new Scanner(System.in);
+        while (!scanner.hasNext()) {
+            scanner.next();
+        }
+        String text = scanner.nextLine();
+        scanner.close();
+        return text;
     }
 }

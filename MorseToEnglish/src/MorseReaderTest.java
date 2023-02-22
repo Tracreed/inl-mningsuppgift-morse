@@ -45,9 +45,19 @@ class MorseReaderTest {
     }
 
     @Test
-    @DisplayName("Check that english is converted to morse code")
-    void testEnglishToMorse() {
-        assertEquals(".-", morseReader.englishToMorse("A"));
+    @DisplayName("Check that numbers are converted to morse code correctly")
+    void testEnglishNumbersToMorse() {
+        // Check all the numbers
+        assertEquals(".----", morseReader.englishToMorse("1"));
+        assertEquals("..---", morseReader.englishToMorse("2"));
+        assertEquals("...--", morseReader.englishToMorse("3"));
+        assertEquals("....-", morseReader.englishToMorse("4"));
+        assertEquals(".....", morseReader.englishToMorse("5"));
+        assertEquals("-....", morseReader.englishToMorse("6"));
+        assertEquals("--...", morseReader.englishToMorse("7"));
+        assertEquals("---..", morseReader.englishToMorse("8"));
+        assertEquals("----.", morseReader.englishToMorse("9"));
+        assertEquals("-----", morseReader.englishToMorse("0"));
     }
 
     @Test
